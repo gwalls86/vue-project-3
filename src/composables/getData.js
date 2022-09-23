@@ -11,7 +11,7 @@ export const useGetData = () => {
          loading.value = true;
         try {
             const res = await axios.get(url);               
-            data.value = res.data;
+            data.value = res.data;            
         } catch (e) {
             error.value = "Error de servidor";
         } finally {

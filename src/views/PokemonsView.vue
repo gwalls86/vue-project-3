@@ -15,7 +15,7 @@
     //     }
     // }
 
-    getData("https://pokeapi.co/api/v2/pokemon");
+    getData("https://pokeapi.co/api/v2/pokemon");    
 </script>
 
 <template>

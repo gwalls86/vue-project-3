@@ -1,12 +1,16 @@
 <script setup>
     //import axios from 'axios';
-    import {useRoute,useRouter} from 'vue-router';
     //import {ref} from 'vue';
+    import {useRoute,useRouter} from 'vue-router';    
     import {useGetData} from '@/composables/getData';
+    import {useFavoritosStore} from "@/store/favoritos";
 
     const route = useRoute();
     const router = useRouter();
+    const useFavoritos = useFavoritosStore();
+
     const {getData, loading, data, error} = useGetData();
+    const {add,findPoke} = useFavoritos;
 
     //const poke = ref({});
 
@@ -32,7 +36,10 @@
     
     <div v-if="data">
         <img :src="data.sprites?.front_default" width="200" alt="">
-        <h1>Poke name: {{$route.params.name }}</h1>
+        <h1>Poke name: {{$route.params.name }}</h1>        
+        <button @click="add(data)" class="btn btn-outline-primary mb-2" :disabled="findPoke(data.name)">
+            Agregar Favoritos
+        </button>
     </div>    
     <button @click="back" class="btn btn-outline-primary">Back</button>
     
